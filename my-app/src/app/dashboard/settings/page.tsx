@@ -1,4 +1,8 @@
-// `app/dashboard/page.tsx` is the UI for the `/dashboard` URL
-export default function Page() {
-    return <h1>Hello, Settings page!</h1>
-  }
+async function wait(ms: number) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+export default async function Page() {
+  await wait(300);
+  return <h1>Hello, Settings page!</h1>;
+}
