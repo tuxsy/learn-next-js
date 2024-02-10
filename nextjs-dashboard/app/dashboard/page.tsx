@@ -6,12 +6,18 @@ import { fetchRevenue, fetchLatestInvoices, fetchCardData } from '@/app/lib/data
 
 export default async function Page() {
 
+    // Parallel fetching data
     const [revenue, latestInvoices, _cardData] = await Promise.all([
         fetchRevenue(),
         fetchLatestInvoices(),
         fetchCardData()
     ]);
     const { totalPaidInvoices, totalPendingInvoices, numberOfInvoices, numberOfCustomers } = _cardData;
+
+    // Waterfall fetchig data
+    // const revenue = await fetchRevenue();
+    // const latestInvoices = await fetchLatestInvoices();
+    // const { totalPaidInvoices, totalPendingInvoices, numberOfInvoices, numberOfCustomers } = await fetchCardData(); 
 
 
     return (
